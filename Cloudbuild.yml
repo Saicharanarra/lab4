@@ -1,11 +1,11 @@
 steps:
   # Build the Python image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/premium-apex-300708/arra-flask-backend-image:latest', '.']
+    args: ['build', '-t', 'gcr.io/premium-apex-300708/arra-flask-backend-image', '.']
 
   # Push the Python image to Google Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/premium-apex-300708/arra-flask-backend-image:latest']
+    args: ['push', 'gcr.io/premium-apex-300708/arra-flask-backend-image']
 
   # Update the Compute Engine instance with the new image
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -15,7 +15,7 @@ steps:
       - 'update-container'
       - 'arra-terraform-test'
       - '--zone=us-central1-a'
-      - '--container-image=gcr.io/premium-apex-300708/arra-flask-backend-image:latest'
+      - '--container-image=gcr.io/premium-apex-300708/arra-flask-backend-image'
 
 options:
   logging: CLOUD_LOGGING_ONLY
