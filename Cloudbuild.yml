@@ -7,15 +7,16 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/premium-apex-300708/arra-flask-backend-image']
 
-  # Update the Compute Engine instance with the new image
+  # Update the Compute Engine instance with the new image and container declaration
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'compute'
       - 'instances'
-      - 'update-container'
+      - 'add-metadata'
       - 'arra-terraform-test'
+      - '--metadata=gce-container-declaration={"spec":{"containers":[{"name":"flask-container","image":"gcr.io/premium-apex-300708/arra-flask-backend-image"}]}}'
       - '--zone=us-east1-b'
-      - '--container-image=gcr.io/premium-apex-300708/arra-flask-backend-image'
+      - '--quiet'
 
 options:
   logging: CLOUD_LOGGING_ONLY
