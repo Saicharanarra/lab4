@@ -9,4 +9,14 @@ steps:
 
   # Update the Compute Engine instance with the new image
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['compute', 'instances', 'update-container', 'arra-terraform-test', '--zone=us-central1-a', '--container-image=gcr.io/premium-apex-300708/arra-flask-backend-image:latest']
+    args:
+      - 'compute'
+      - 'instances'
+      - 'update-container'
+      - 'arra-terraform-test'
+      - '--zone=us-central1-a'
+      - '--container-image=gcr.io/premium-apex-300708/arra-flask-backend-image:latest'
+
+options:
+  logging:
+    - 'CLOUD_LOGGING_ONLY'
