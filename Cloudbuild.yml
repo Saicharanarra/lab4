@@ -14,7 +14,7 @@ steps:
       - 'instances'
       - 'update-container'
       - 'arra-terraform-test'
-      - '--zone=us-central1-a'
+      - '--zone=us-east1-b'
       - '--container-image=gcr.io/premium-apex-300708/arra-flask-backend-image'
 
 options:
