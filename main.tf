@@ -1,4 +1,5 @@
 provider "google" {
+  credentials = "key.json"
   project = "premium-apex-300708"  // Specify your project id
   region  = "us-central1"          // Specify region
 }
@@ -44,12 +45,10 @@ resource "google_compute_instance" "default" {
     foo = "bar"
   }
 
-  // Install Docker and run the container on instance startup
   metadata_startup_script = <<-EOF
     #!/bin/bash
-    sudo apt-get update
-    sudo apt-get install -y docker.io
-    sudo docker run -d -p 80:80 gcr.io/premium-apex-300708/arra-flask-backend-image:latest
+    echo "This is a startup script"
+    # Add more commands here as needed
   EOF
 }
 
