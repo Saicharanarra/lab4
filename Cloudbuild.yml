@@ -13,7 +13,7 @@ steps:
       - 'compute'
       - 'instances'
       - 'add-metadata'
-      - 'arra-terraform'  # Instance name
+      - 'arra-terraform-test'  # Instance name
       - '--zone=us-central1-a'   # Zone
       - '--metadata=image=gcr.io/premium-apex-300708/arra-flask-backend-image'  # Corrected metadata syntax
 
